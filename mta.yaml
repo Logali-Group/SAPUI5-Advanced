@@ -1,0 +1,56 @@
+_schema-version: "3.2"
+ID: logali
+version: 0.0.1
+modules:
+- name: logali-approuter
+  type: approuter.nodejs
+  path: logali-approuter
+  requires:
+  - name: logali_html_repo_runtime
+  - name: dest_logali
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: logali_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: logali_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - Employees-content.zip
+      name: Employees
+      target-path: resources/
+- name: Employees
+  type: html5
+  path: Employees
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: logali_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: logali_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: dest_logali
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install
