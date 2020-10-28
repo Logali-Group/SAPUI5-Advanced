@@ -10,16 +10,54 @@
 					<content>
                         <HBox>
                             <Label id="labelEmployee" labelFor="inputEmployee" text="{i18n>labelEmployee}" class="sapUiSmallMargin"/>
-                            <Input id="inputEmployee" maxLength="6" width="200px" class="sapUiSmallMarginEnd" liveChange="onValidate"/>
-                            <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="false"/>
-                            <Select id="slCountry" forceSelection="false" visible="false">
+                            <Input id="inputEmployee" value="{/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd"/>
+                            <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="true"/>
+                            <Select id="slCountry" selectedKey="{/CountryKey}" forceSelection="false" items="{/ListCountry}" visible="true">
                                 <items>
-                                    <core:Item key="US" text="{i18n>countryUS}"/>
-                                    <core:Item key="UK" text="{i18n>countryUK}"/>
-                                    <core:Item key="ES" text="{i18n>countryES}"/>
+                                    <core:Item key="{Key}" text="{Text}"/>
                                 </items>
                             </Select>
-                        </HBox>
+                            <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnClearFilter" text="{i18n>btnClearFilter}" icon="sap-icon://clear-filter" press="onClearFilter" class="sapUiSmallMarginEnd"/>
+                         </HBox>
+                         <HBox>
+                            <Panel>
+                                <Table id="tableEmployee" items="{/Employees}">
+                                    <columns>
+                                        <Column> 
+                                            <header>
+                                                <Label text="{i18n>tableId}"/>
+                                            </header>
+                                        </Column>
+                                        <Column> 
+                                            <header>
+                                                <Label text="{i18n>tableName}"/>
+                                            </header>
+                                        </Column>
+                                        <Column> 
+                                            <header>
+                                                <Label text="{i18n>tableCountry}"/>
+                                            </header>
+                                        </Column>
+                                        <Column> 
+                                            <header>
+                                                <Label text="{i18n>tableCity}"/>
+                                            </header>
+                                    </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem >
+                                            <cells>
+                                                <Label text="{EmployeeID}"/>
+                                                <Label text="{LastName}, {FirstName}"/>
+                                                <Label text="{Country}"/>
+                                                <Label text="{City}"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </Panel>
+                         </HBox>
                     </content>
 				</Page>
 			</pages>
