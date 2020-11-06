@@ -1,120 +1,102 @@
-{
-    "EmployeeId": "",
-    "CountryKey": "",
-    "ListCountry": [
-        {
-            "Key": "US",
-            "Text": "United States"
-        },
-        {
-            "Key": "UK",
-            "Text": "United Kindom"
-        },
-        {
-            "Key": "ES",
-            "Text": "Spain"
-        }
-    ],
-    "Employees": [
-        {
-            "EmployeeID": "1",
-            "LastName": "García Lopez",
-            "FirstName": "María",
-            "Country": "ES",
-            "City": "Madrid",
-            "PostalCode": "28021",
-            "Orders": [
-                {
-                    "OrderID": "208",
-                    "Freight": "65",
-                    "ShipAddress": "Calle Alcala"
-                },
-                {
-                    "OrderID": "2096",
-                    "Freight": "21",
-                    "ShipAddress": "Calle Mayor"
-                }
-            ]
-        },
-        {
-            "EmployeeID": "2",
-            "LastName": "Fernandez Díaz",
-            "FirstName": "Pedro",
-            "Country": "ES",
-            "City": "Granada",
-            "PostalCode": "18008",
-            "Orders": [
-                {
-                    "OrderID": "1056",
-                    "Freight": "78",
-                    "ShipAddress": "Calle Alcala"
-                },
-                {
-                    "OrderID": "6731",
-                    "Freight": "90",
-                    "ShipAddress": "Calle Mayor"
-                }
-            ]
-        },
-        {
-            "EmployeeID": "3",
-            "LastName": "Davolio",
-            "FirstName": "Nancy",
-            "Country": "US",
-            "City": "Seattle",
-            "PostalCode": "98052",
-            "Orders": [
-                {
-                    "OrderID": "789",
-                    "Freight": "34",
-                    "ShipAddress": "1029 - 12th Ave. S."
-                },
-                {
-                    "OrderID": "3057",
-                    "Freight": "12",
-                    "ShipAddress": "2732 Baker Blvd."
-                }
-            ]
-        },
-        {
-            "EmployeeID": "4",
-            "LastName": "Peacock",
-            "FirstName": "Margaret",
-            "Country": "US",
-            "City": "Redmond",
-            "PostalCode": "08025",
-            "Orders": [
-                {
-                    "OrderID": "100",
-                    "Freight": "83",
-                    "ShipAddress": "187 Suffolk Ln."
-                },
-                {
-                    "OrderID": "209",
-                    "Freight": "52",
-                    "ShipAddress": "87 Polk St. Suite 5"
-                }
-            ]
-        },
-        {
-            "EmployeeID": "5",
-            "LastName": "Buchanan",
-            "FirstName": "Steven",
-            "Country": "UK",
-            "City": "London",
-            "PostalCode": "67059",
-            "Orders": [
-                {
-                    "OrderID": "10",
-                    "Freight": "57",
-                    "ShipAddress": "Brook Farm Stratford St. Mary"
-                },
-                {
-                    "OrderID": "2010",
-                    "Freight": "89",
-                    "ShipAddress": "Fauntleroy Circus"
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "EmployeeID": "1",
+        "LastName": "García Lopez",
+        "FirstName": "María",
+        "Country": "ES",
+        "City": "Madrid",
+        "PostalCode": "28021",
+        "Orders": [
+            {
+                "OrderID": "208",
+                "Freight": "65",
+                "ShipAddress": "Calle Alcala"
+            },
+            {
+                "OrderID": "2096",
+                "Freight": "21",
+                "ShipAddress": "Calle Mayor"
+            }
+        ]
+    },
+    {
+        "EmployeeID": "2",
+        "LastName": "Fernandez Díaz",
+        "FirstName": "Pedro",
+        "Country": "ES",
+        "City": "Granada",
+        "PostalCode": "18008",
+        "Orders": [
+            {
+                "OrderID": "1056",
+                "Freight": "78",
+                "ShipAddress": "Calle Alcala"
+            },
+            {
+                "OrderID": "6731",
+                "Freight": "90",
+                "ShipAddress": "Calle Mayor"
+            }
+        ]
+    },
+    {
+        "EmployeeID": "3",
+        "LastName": "Davolio",
+        "FirstName": "Nancy",
+        "Country": "US",
+        "City": "Seattle",
+        "PostalCode": "98052",
+        "Orders": [
+            {
+                "OrderID": "789",
+                "Freight": "34",
+                "ShipAddress": "1029 - 12th Ave. S."
+            },
+            {
+                "OrderID": "3057",
+                "Freight": "12",
+                "ShipAddress": "2732 Baker Blvd."
+            }
+        ]
+    },
+    {
+        "EmployeeID": "4",
+        "LastName": "Peacock",
+        "FirstName": "Margaret",
+        "Country": "US",
+        "City": "Redmond",
+        "PostalCode": "08025",
+        "Orders": [
+            {
+                "OrderID": "100",
+                "Freight": "83",
+                "ShipAddress": "187 Suffolk Ln."
+            },
+            {
+                "OrderID": "209",
+                "Freight": "52",
+                "ShipAddress": "87 Polk St. Suite 5"
+            }
+        ]
+    },
+    {
+        "EmployeeID": "5",
+        "LastName": "Buchanan",
+        "FirstName": "Steven",
+        "Country": "UK",
+        "City": "London",
+        "PostalCode": "67059",
+        "Orders": [
+            {
+                "OrderID": "10",
+                "Freight": "57",
+                "ShipAddress": "Brook Farm Stratford St. Mary"
+            },
+            {
+                "OrderID": "2010",
+                "Freight": "89",
+                "ShipAddress": "Fauntleroy Circus"
+            }
+        ]
+    }
+]
