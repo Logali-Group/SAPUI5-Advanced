@@ -13,6 +13,12 @@
       "target": "$1"
     },
     {
+      "authenticationType": "none",
+      "csrfProtection": false,
+      "source": "^/sap/opu/odata/sap/YSAPUI5_SRV_01/",
+      "destination": "logaligroupERP"
+    },
+    {
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",

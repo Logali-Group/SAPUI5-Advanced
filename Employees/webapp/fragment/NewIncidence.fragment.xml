@@ -2,28 +2,30 @@
     <Panel>
         <headerToolbar>
             <Toolbar>
-                <core:Icon src="{= ${incidenceModel>status}==='0' ? 'accept' :
-                                   ${incidenceModel>status}==='1' ? 'alert' :
-                                   ${incidenceModel>status}==='2' ? 'decline' : '' }"/>
-                <Title text="{i18n>incidence}  {incidenceModel>index} {path : 'incidenceModel>date', formatter:'.Formatter.dateFormat'}"></Title>
+                <core:Icon src="{= ${incidenceModel>Type}==='0' ? 'sap-icon://accept' :
+                                   ${incidenceModel>Type}==='1' ? 'sap-icon://alert' :
+                                   ${incidenceModel>Type}==='2' ? 'sap-icon://decline' : '' }"/>
+                <Title text="{i18n>incidence} {= ${incidenceModel>IncidenceId} ? parseInt(${incidenceModel>IncidenceId}) : ''} 
+                             {path : 'incidenceModel>CreationDate', formatter:'.Formatter.dateFormat'}"></Title>
                 <ToolbarSpacer/>
-                <core:Icon src="delete" press="onDeleteIncidence"/>
+                <Button icon="sap-icon://save" press="onSaveIncidence"/>
+                <core:Icon src="sap-icon://delete" press="onDeleteIncidence"/>
             </Toolbar>
         </headerToolbar>
         <content>
             <HBox >
                 <VBox class="sapUiSmallMarginEnd">
                     <Text text="{i18n>incidenceDate}"/>
-                    <DatePicker dateValue="{incidenceModel>date}"/>
+                    <DatePicker dateValue="{incidenceModel>CreationDate}" change="updateIncidenceCreationDate"/>
                 </VBox>
                 
-                <VBox visible="{= ${incidenceModel>date} !== '' &amp;&amp; ${incidenceModel>date} !== undefined}" class="sapUiSmallMarginEnd">
+                <VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}" class="sapUiSmallMarginEnd">
                     <Text text="{i18n>incidenceReason}"/>
-                    <Input></Input> 
+                    <Input value="{incidenceModel>Reason}" change="updateIncidenceReason"></Input> 
                 </VBox>
-                <VBox visible="{= ${incidenceModel>date} !== '' &amp;&amp; ${incidenceModel>date} !== undefined}">
+                <VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}">
                     <Text text="{i18n>incidenceType}"/>
-                    <Select selectedKey="{incidenceModel>status}" forceSelection="false">
+                    <Select selectedKey="{incidenceModel>Type}" forceSelection="false" change="updateIncidenceType">
                         <core:Item key="0" text="{i18n>incidenceCorrect}"/>
                         <core:Item key="1" text="{i18n>incidencePending}"/>
                         <core:Item key="2" text="{i18n>incidenceError}"/>

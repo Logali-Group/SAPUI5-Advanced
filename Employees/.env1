@@ -1,1 +1,1 @@
-destinations=[{"name":"Northwind","url":"https://Northwind.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"}]
+destinations=[{"name":"Northwind","url":"https://Northwind.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"},{"name":"logaligroupERP","url":"http://logaligroupERP.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"}]
