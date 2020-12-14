@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Table items="{odataNorthwind>Orders}" width="700px">
+        <columns>
+            <Column>
+                <header>
+                    <Label text="{i18n>orderID}"/>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label text="{i18n>freight}"/>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label text="{i18n>shipAddress}"/>
+                </header>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Label text="{odataNorthwind>OrderID}"/>
+                    <Label text="{odataNorthwind>Freight}"/>
+                    <Label text="{odataNorthwind>ShipAddress}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>    
+</core:FragmentDefinition>

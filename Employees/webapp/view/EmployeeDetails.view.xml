@@ -66,5 +66,8 @@
             <Panel id="tableIncidence" class="sapUiNoContentPadding" backgroundDesign="Transparent"></Panel>
         </Panel>
 
+        <Panel class="sapUiSiceCompact" backgroundDesign="Transparent" headerText="{i18n>orders}">
+            <core:Fragment fragmentName="logaligroup.Employees.fragment.TableOrders" type="XML"/>
+        </Panel>
     </Page>
 </mvc:View>
