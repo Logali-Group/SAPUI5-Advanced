@@ -53,10 +53,10 @@
     "sap.ui5": {
         "flexEnabled": false,
         "rootView": {
-            "viewName": "logaligroup.Employees.view.Main",
+            "viewName": "logaligroup.Employees.view.App",
             "type": "XML",
             "async": true,
-            "id": "Main"
+            "id": "app"
         },
         "dependencies": {
             "minUI5Version": "1.60.1",
@@ -121,9 +121,16 @@
             "routes": [
                 {
                     "name": "RouteMain",
-                    "pattern": "RouteMain",
+                    "pattern": "",
                     "target": [
                         "TargetMain"
+                    ]
+                },
+                {
+                    "name": "RouteOrderDetails",
+                    "pattern": "OrderDetails/{OrderID}",
+                    "target": [
+                        "TargetOrderDetails"
                     ]
                 }
             ],
@@ -135,12 +142,9 @@
                     "viewId": "Main",
                     "viewName": "Main"
                 },
-                "TargetMasterEmployee": {
+                "TargetOrderDetails": {
                     "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "MasterEmployee",
-                    "viewName": "MasterEmployee"
+                    "viewName": "OrderDetails"
                 }
             }
         }
