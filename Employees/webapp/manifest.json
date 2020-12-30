@@ -84,7 +84,8 @@
                     "defaultOperationMode": "Server",
                     "defaultBindingMode": "OneWay",
                     "defaultCountMode": "Request",
-                    "refreshAfterChange": false
+                    "refreshAfterChange": false,
+                    "useBatch": false
                 }
             },
             "incidenceModel": {
