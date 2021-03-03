@@ -8,6 +8,14 @@
       "options": {
         "cwd": "${workspaceFolder}/logali-approuter"
       }
+    },
+    {
+      "label": "Build Onpremise",
+      "type": "shell",
+      "command": "if [ ! -f ${workspaceFolder}/Onpremise/onpremise-approuter/node_modules/@sap/html5-repo-mock/index.js ] || [ ! -f ${workspaceFolder}/Onpremise/onpremise-approuter/node_modules/@sap/approuter/approuter.js ]; then npm i @sap/approuter && npm i @sap/html5-repo-mock; fi",
+      "options": {
+        "cwd": "${workspaceFolder}/Onpremise/onpremise-approuter"
+      }
     }
   ]
 }

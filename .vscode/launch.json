@@ -20,6 +20,26 @@
       },
       "envFile": "${workspaceFolder}/Employees/.env1",
       "preLaunchTask": "Build logali"
+    },
+    {
+      "name": "Run Onpremise-HTML5Module",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/Onpremise/onpremise-approuter/node_modules/@sap/html5-repo-mock/index.js",
+      "args": [
+        "--standalone",
+        "/nsHTML5Module/index.html",
+        "--ui5",
+        "{\"version\":\".\"}"
+      ],
+      "cwd": "${workspaceFolder}/Onpremise/HTML5Module",
+      "env": {
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
+        "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/logali/Onpremise/HTML5Module\"}"
+      },
+      "envFile": "${workspaceFolder}/Onpremise/HTML5Module/.env1",
+      "preLaunchTask": "Build Onpremise"
     }
   ]
 }

@@ -1,4 +1,5 @@
 {
   "authenticationMethod": "none",
+  "welcomeFile": "logaligroupEmployees",
   "routes": []
 }

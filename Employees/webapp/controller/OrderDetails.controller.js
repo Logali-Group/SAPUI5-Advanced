@@ -4,7 +4,7 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterOperator"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
