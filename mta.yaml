@@ -1,0 +1,81 @@
+_schema-version: "3.2"
+ID: employees
+version: 0.0.1
+modules:
+- name: employees-approuter
+  type: approuter.nodejs
+  path: employees-approuter
+  requires:
+  - name: employees_html_repo_runtime
+  - name: uaa_employees
+  - name: employees-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: employees_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: employees_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - employees.zip
+      name: employees
+      target-path: resources/
+- name: employees
+  type: html5
+  path: employees
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: employees_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: uaa_employees
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: employees-xsuaa-service
+    service-plan: application
+- name: employees_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: employees-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: employees-destination-service
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo

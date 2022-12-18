@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YSAPUI5_SRV_01" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZGW_INCIDENTS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IncidenceId"/>
+                    <PropertyRef Name="SapId"/>
+                    <PropertyRef Name="EmployeeId"/>
+                </Key>
+                <Property Name="IncidenceId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SapId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="SapId" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EmployeeId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Dummy" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CreationDateX" Type="Edm.Boolean" sap:unicode="false" sap:label="DateX" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Version Number Component" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TypeX" Type="Edm.Boolean" sap:unicode="false" sap:label="TypeX" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reason" Type="Edm.String" MaxLength="200" sap:unicode="false" sap:label="Text" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ReasonX" Type="Edm.Boolean" sap:unicode="false" sap:label="ResonX" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Signature" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderId"/>
+                    <PropertyRef Name="SapId"/>
+                    <PropertyRef Name="EmployeeId"/>
+                </Key>
+                <Property Name="MediaContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="File Xstring" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderId" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Order ID" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SapId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Char" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EmployeeId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Dummy" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MimeType" Type="Edm.String" MaxLength="128" sap:unicode="false" sap:label="MIME type" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Files" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AttId"/>
+                    <PropertyRef Name="OrderId"/>
+                    <PropertyRef Name="SapId"/>
+                    <PropertyRef Name="EmployeeId"/>
+                </Key>
+                <Property Name="AttId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Dummy" sap:updatable="false"/>
+                <Property Name="OrderId" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Order ID" sap:updatable="false"/>
+                <Property Name="SapId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Char" sap:updatable="false"/>
+                <Property Name="EmployeeId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Dummy" sap:updatable="false"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Char80"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="MIME type"/>
+            </EntityType>
+            <EntityContainer Name="YSAPUI5_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="IncidentsSet" EntityType="YSAPUI5_SRV_01.ZGW_INCIDENTS" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SignatureSet" EntityType="YSAPUI5_SRV_01.Signature" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FilesSet" EntityType="YSAPUI5_SRV_01.Files" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://erp13.sap4practice.com:9037/sap/opu/odata/sap/YSAPUI5_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://erp13.sap4practice.com:9037/sap/opu/odata/sap/YSAPUI5_SRV_01/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

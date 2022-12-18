@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Panel>
+        <Button id="btnShowCity" text="{i18n>showCity}" visible="{jsonModelConfig>/visibleBtnShowCity}" press="onShowCity"/>
+        <Button id="btnHideCity" text="{i18n>hideCity}" visible="{jsonModelConfig>/visibleBtnHideCity}" press="onHideCity"/>
+        <Table id="tableEmployee" items="{odataNorthwind>/Employees}">
+            <columns>
+                <Column visible="{jsonModelConfig>/visibleID}"> 
+                    <header>
+                        <Label text="{i18n>tableId}"/>
+                    </header>
+                </Column>
+                <Column visible="{jsonModelConfig>/visibleName}"> 
+                    <header>
+                        <Label text="{i18n>tableName}"/>
+                    </header>
+                </Column>
+                <Column visible="{jsonModelConfig>/visibleCountry}"> 
+                     <header>
+                        <Label text="{i18n>tableCountry}"/>
+                    </header>
+                </Column>
+                <Column visible="{jsonModelConfig>/visibleCity}"> 
+                    <header>
+                        <Label text="{i18n>tableCity}"/>
+                    </header>
+                </Column>
+                <Column width="100px"> 
+                    <header>
+                        <Label text="{i18n>tableShowDetails}"/>
+                    </header>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Navigation" press="showEmployee">
+                    <cells>
+                        <Label text="{odataNorthwind>EmployeeID}"/>
+                        <Label text="{odataNorthwind>LastName}, {odataNorthwind>FirstName}"/>
+                        <Label text="{odataNorthwind>Country}"/>
+                        <Label text="{odataNorthwind>City}"/>
+                        <core:Icon src="sap-icon://show" press="showOrders"></core:Icon>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <HBox id="ordersTable"></HBox>
+    </Panel>
+</core:FragmentDefinition>
