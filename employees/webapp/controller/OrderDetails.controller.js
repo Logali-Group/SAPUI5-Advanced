@@ -52,6 +52,7 @@ sap.ui.define([
             });
 
             //Bind Files
+            console.log(new sap.m.upload.UploadSetItem());
             this.byId("uploadCollection").bindAggregation("items", {
                 path: "incidenceModel>/FilesSet",
                 filters: [
@@ -59,11 +60,10 @@ sap.ui.define([
                     new Filter("SapId", FilterOperator.EQ, this.getOwnerComponent().SapId),
                     new Filter("EmployeeId", FilterOperator.EQ, employeeId),
                 ],
-                template: new sap.m.UploadCollectionItem({
-                    documentId: "{incidenceModel>AttId}",
+                template: new sap.m.upload.UploadSetItem({
                     visibleEdit: false,
                     fileName: "{incidenceModel>FileName}"
-                }).attachPress(this.downloadFile)
+                }).attachOpenPressed(this.downloadFile)
             });
         };
 
@@ -149,29 +149,46 @@ sap.ui.define([
                 };
             },
 
-            onFileBeforeUpload: function (oEvent) {
-                let fileName = oEvent.getParameter("fileName");
-                let objContext = oEvent.getSource().getBindingContext("odataNorthwind").getObject();
-                let oCustomerHeaderSlug = new sap.m.UploadCollectionParameter({
-                    name: "slug",
-                    value: objContext.OrderID + ";" + this.getOwnerComponent().SapId + ";"
-                        + objContext.EmployeeID
-                        + ";" + fileName
+            onFileChange: function (oEvent) {
+                console.log("Agregar Token");
+                let oUplodCollection = oEvent.getSource();
+
+                // Header Token CSRF - Cross-site request forgery
+                let oCustomerHeaderToken = new sap.ui.core.Item({
+                    key: "x-csrf-token",
+                    text: this.getOwnerComponent().getModel("incidenceModel").getSecurityToken()
                 });
-                oEvent.getParameters().addHeaderParameter(oCustomerHeaderSlug);
+
+                oUplodCollection.addHeaderField(oCustomerHeaderToken);
             },
 
-            onFileChange: function (oEvent) {
-                let oUplodCollection = oEvent.getSource();
+            onFileBeforeUpload: function (oEvent) {
+                console.log("Entro en agregar parametros en el header");
+
+                let oItem = oEvent.getParameter("item");
+                let fileName = oItem.getFileName();
+                let objContext = oEvent.getSource().getBindingContext("odataNorthwind").getObject();
+
                 // Header Token CSRF - Cross-site request forgery
-                let oCustomerHeaderToken = new sap.m.UploadCollectionParameter({
-                    name: "x-csrf-token",
-                    value: this.getView().getModel("incidenceModel").getSecurityToken()
+                let oCustomerHeaderToken = new sap.ui.core.Item({
+                    key: "X-CSRF-Token",
+                    text:this.getView().getModel("incidenceModel").getSecurityToken()
                 });
-                oUplodCollection.addHeaderParameter(oCustomerHeaderToken);
+
+                oItem.addHeaderField(oCustomerHeaderToken);
+
+                let oCustomerText = new sap.ui.core.Item({
+                    key:"Slug",
+                    text: objContext.OrderID + ";" + this.getOwnerComponent().SapId + ";" + objContext.EmployeeID + ";" + fileName
+                });
+
+                oItem.addHeaderField(oCustomerText)
+
+
             },
 
             onFileUploadComplete: function (oEvent) {
+                console.log("Entro en refrescar");
                 oEvent.getSource().getBinding("items").refresh();
             },
 
